@@ -30,7 +30,7 @@ const replaceUploadingMessage = ()=>{
 };
 window.requestAnimationFrame( replaceUploadingMessage );
 
-
+//DebugOff()
 
 // Show the 'intro' trial first, then all the 'experiment' trials in a random order
 // then send the results and finally show the trial labeled 'bye'
@@ -44,14 +44,14 @@ Sequence("intro_ID",
 "instruct_1_2_general",	 
 "preload_prac_cb",
 "instruct_2_prac_cblock",
-"prac_cb",
+randomize("prac_cb"),
 "preload_pretrain_cb",
 "instruct_3_cblock_pretrain",
 "pretrain_cb",
 "instruct_4_pause_after_cblock_pretrain",
 "preload_prac_ncb",
 "instruct_5_prac_ncblock",
-"prac_ncb",
+randomize("prac_ncb"),
 "preload_pretrain_ncb",
 "instruct_6_ncblock_pretrain",
 "pretrain_ncb",
@@ -59,16 +59,16 @@ Sequence("intro_ID",
 "instruct_8_0_train",	 
 "preload_train1_cb",
 "instruct_8_1_cblock_train1",
-"train1_cb",
+randomize("train1_cb"),
 "preload_train1_ncb",
 "instruct_8_1_ncblock_train1",
-"train1_ncb",	 
+randomize("train1_ncb"),	 
 "preload_train2_cb",
 "instruct_8_2_cblock_train2",
-"train2_cb", 
+randomize("train2_cb"), 
 "preload_train2_ncb",
 "instruct_8_2_ncblock_train2",
-"train2_ncb",
+randomize("train2_ncb"),
 "instruct_8_2_pause_after_ncblock_train2.png",
 "preload_train3_cb",
 "instruct_8_3_cblock_train3",
@@ -219,7 +219,7 @@ Template(GetTable("questionnaire.csv"),
             .print()
         ,
         newDropDown("Age", "--")
-            .add("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100+")
+            .add("18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100+")
             .print()
             .log()
         ,
@@ -822,7 +822,7 @@ Template(GetTable("prac_ncblock.csv"),
 
 ///////////////////// templates for trials during pretrain, train and test session 
 
-Template(GetTable("list1_pretrain_cblock.csv"),
+Template(GetTable("list4_pretrain_cblock.csv"),
     pretrain_cb =>
     newTrial("pretrain_cb",
     
@@ -866,6 +866,7 @@ Template(GetTable("list1_pretrain_cblock.csv"),
 	.log()    
     )
     .log( "sub_id"     , getVar("ID")    )
+    .log( "listNr" , pretrain_cb.list)	 
     .log( "phrase_item", pretrain_cb.phrase_item )
     .log( "phrase_pretrain", pretrain_cb.phrase_pretrain)
     .log( "condition_exposure", pretrain_cb.condition_exposure)
@@ -873,7 +874,7 @@ Template(GetTable("list1_pretrain_cblock.csv"),
 );
 
 
-Template(GetTable("list1_pretrain_ncblock.csv"),
+Template(GetTable("list4_pretrain_ncblock.csv"),
     pretrain_ncb =>
     newTrial("pretrain_ncb",
     
@@ -917,13 +918,14 @@ Template(GetTable("list1_pretrain_ncblock.csv"),
 	.log()    
     )
     .log( "sub_id"     , getVar("ID")    )
-    .log( "phrase_item", pretrain_ncb.phrase_item )
+    .log( "listNr" , pretrain_ncb.list)
+    .log( "phrase_item", pretrain_ncb.phrase_item )
     .log( "phrase_pretrain", pretrain_ncb.phrase_pretrain)
     .log( "condition_exposure", pretrain_ncb.condition_exposure)
     .log( "condition_phrFreq", pretrain_ncb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train1_cblock.csv"),
+Template(GetTable("list4_train1_cblock.csv"),
     train1_cb =>
     newTrial("train1_cb",
     
@@ -973,7 +975,7 @@ Template(GetTable("list1_train1_cblock.csv"),
     .log( "condition_phrFreq", train1_cb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train1_ncblock.csv"),
+Template(GetTable("list4_train1_ncblock.csv"),
     train1_ncb =>
     newTrial("train1_ncb",
     
@@ -1024,7 +1026,7 @@ Template(GetTable("list1_train1_ncblock.csv"),
 );
 
 
-Template(GetTable("list1_train2_cblock.csv"),
+Template(GetTable("list4_train2_cblock.csv"),
     train2_cb =>
     newTrial("train2_cb",
     
@@ -1074,7 +1076,7 @@ Template(GetTable("list1_train2_cblock.csv"),
     .log( "condition_phrFreq", train2_cb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train2_ncblock.csv"),
+Template(GetTable("list4_train2_ncblock.csv"),
     train2_ncb =>
     newTrial("train2_ncb",
     
@@ -1124,7 +1126,7 @@ Template(GetTable("list1_train2_ncblock.csv"),
     .log( "condition_phrFreq", train2_ncb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train3_cblock.csv"),
+Template(GetTable("list4_train3_cblock.csv"),
     train3_cb =>
     newTrial("train3_cb",
     
@@ -1174,7 +1176,7 @@ Template(GetTable("list1_train3_cblock.csv"),
     .log( "condition_phrFreq", train3_cb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train3_ncblock.csv"),
+Template(GetTable("list4_train3_ncblock.csv"),
     train3_ncb =>
     newTrial("train3_ncb",
     
@@ -1224,7 +1226,7 @@ Template(GetTable("list1_train3_ncblock.csv"),
     .log( "condition_phrFreq", train3_ncb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train4_cblock.csv"),
+Template(GetTable("list4_train4_cblock.csv"),
     train4_cb =>
     newTrial("train4_cb",
     
@@ -1274,7 +1276,7 @@ Template(GetTable("list1_train4_cblock.csv"),
     .log( "condition_phrFreq", train4_cb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train4_ncblock.csv"),
+Template(GetTable("list4_train4_ncblock.csv"),
     train4_ncb =>
     newTrial("train4_ncb",
     
@@ -1324,7 +1326,7 @@ Template(GetTable("list1_train4_ncblock.csv"),
     .log( "condition_phrFreq", train4_ncb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train5_cblock.csv"),
+Template(GetTable("list4_train5_cblock.csv"),
     train5_cb =>
     newTrial("train5_cb",
     
@@ -1374,7 +1376,7 @@ Template(GetTable("list1_train5_cblock.csv"),
     .log( "condition_phrFreq", train5_cb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train5_ncblock.csv"),
+Template(GetTable("list4_train5_ncblock.csv"),
     train5_ncb =>
     newTrial("train5_ncb",
     
@@ -1424,7 +1426,7 @@ Template(GetTable("list1_train5_ncblock.csv"),
     .log( "condition_phrFreq", train5_ncb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train6_cblock.csv"),
+Template(GetTable("list4_train6_cblock.csv"),
     train6_cb =>
     newTrial("train6_cb",
     
@@ -1474,7 +1476,7 @@ Template(GetTable("list1_train6_cblock.csv"),
     .log( "condition_phrFreq", train6_cb.condition_phrFreq)
 );
 
-Template(GetTable("list1_train6_ncblock.csv"),
+Template(GetTable("list4_train6_ncblock.csv"),
     train6_ncb =>
     newTrial("train6_ncb",
     
@@ -1527,7 +1529,7 @@ Template(GetTable("list1_train6_ncblock.csv"),
 
 
 
-Template(GetTable("list1_test_cblock.csv"),
+Template(GetTable("list4_test_cblock.csv"),
     test_cb =>
     newTrial("test_cb",
     
@@ -1577,7 +1579,7 @@ Template(GetTable("list1_test_cblock.csv"),
     .log( "condition_phrFreq", test_cb.condition_phrFreq)
 );
 
-Template(GetTable("list1_test_ncblock.csv"),
+Template(GetTable("list4_test_ncblock.csv"),
     test_ncb =>
     newTrial("test_ncb",
     
@@ -1656,7 +1658,7 @@ Template(GetTable("feedback.csv"),
                 .print()
             ,
 	    newTextInput("feedback")
-                .settings.size(400, 10)
+                .settings.size(400, 20)
                 .css("border", "solid 2px grey")
                 .settings.log()
                 .print()
