@@ -152,7 +152,7 @@ CheckPreloaded("test_ncb", 10000)
 //start the recorder and send result files to the server
 Template(GetTable("intro_recorder.csv"),
     ir =>
-    InitiateRecorder("https://uni-potsdam.de/phraseproduction/exp2/upload-recording.php", ir.line1)
+    InitiateRecorder("https://uni-potsdam.de/phraseproduction/exp2_set4/upload-recording.php", ir.line1)
         .label("initiate_recorder")
 )
 
