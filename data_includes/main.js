@@ -45,6 +45,7 @@ Sequence("intro_ID",
 "preload_prac_cb",
 "instruct_2_prac_cblock",
 randomize("prac_cb"),
+"instruct_prac_cblock_fb"
 "preload_pretrain_cb",
 "instruct_3_cblock_pretrain",
 "pretrain_cb",
@@ -52,6 +53,7 @@ randomize("prac_cb"),
 "preload_prac_ncb",
 "instruct_5_prac_ncblock",
 randomize("prac_ncb"),
+"instruct_prac_ncblock_fb"
 "preload_pretrain_ncb",
 "instruct_6_ncblock_pretrain",
 "pretrain_ncb",
@@ -385,6 +387,20 @@ newTrial("instruct_2_prac_cblock",
 );
 
 
+newTrial("instruct_prac_cblock_fb",
+    defaultText
+        .print()
+    ,
+    newImage("pic_instruct", "day1_instruction_prac_cblock_ans.png")
+        .size(1280, 720)
+        .print()
+    ,
+    newKey("space", " ")
+	.log()
+        .wait()
+);
+
+
 newTrial("instruct_3_cblock_pretrain",
     defaultText
         .print()
@@ -426,6 +442,19 @@ newTrial("instruct_5_prac_ncblock",
         .wait()
 );
 
+
+newTrial("instruct_prac_ncblock_fb",
+    defaultText
+        .print()
+    ,
+    newImage("pic_instruct", "day1_instruction_prac_ncblock_ans.png")
+        .size(1280, 720)
+        .print()
+    ,
+    newKey("space", " ")
+	.log()
+        .wait()
+);
 
 newTrial("instruct_6_ncblock_pretrain",
     defaultText
